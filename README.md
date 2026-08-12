@@ -1,6 +1,6 @@
-# Kehn Marv — Personal Portfolio
+# Kehn Marv - Personal Portfolio
 
-**Live site:** [kehn-marv.com](https://kehn-marv.com)
+**Live site:** [kehns-portfolio.vercel.app](https://kehns-portfolio.vercel.app/)
 
 Personal portfolio for **Kehn Marv** — AI agents & developer tools that survive contact with the real world.
 
@@ -12,7 +12,7 @@ Built as a neo-brutalist, motion-heavy Next.js site with an interactive Three.js
 - **Tailwind CSS 4** + custom neo-brutal design tokens
 - **Three.js** via `@react-three/fiber` / `drei` / Rapier physics
 - **Motion** + Lenis smooth scroll
-- Deployed at [kehn-marv.com](https://kehn-marv.com)
+- Deployed at [kehns-portfolio.vercel.app](https://kehns-portfolio.vercel.app/)
 
 ## Project layout
 
@@ -40,7 +40,7 @@ npm test        # vitest
 
 ## Links
 
-- Site: https://kehn-marv.com
+- Site: https://kehns-portfolio.vercel.app/
 - GitHub: https://github.com/Kehn-Marv
 - X: https://x.com/KehnMarv
 - LinkedIn: https://www.linkedin.com/in/kehn-marv/
