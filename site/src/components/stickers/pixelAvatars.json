@@ -1,0 +1,84 @@
+{
+  "palette": {
+    "_": "transparent",
+    "K": "#141111",
+    "W": "#FFFFFF",
+    "P": "#FE7DA8",
+    "O": "#F8A16F",
+    "Y": "#FFD440",
+    "L": "#A9D877",
+    "C": "#27CCF3",
+    "V": "#BBAFE6",
+    "B": "#576574",
+    "R": "#F97264",
+    "G": "#9DCAAA",
+    "D": "#B07A4E"
+  },
+  "avatars": {
+    "robot": {
+      "bg": "C",
+      "grid": [
+        "_KKKKKK_",
+        "KCKWWKCK",
+        "KWKWWKWK",
+        "KKKKKKKK",
+        "_KWKKWK_",
+        "_KKKKKK_",
+        "_KK__KK_",
+        "_KK__KK_"
+      ]
+    },
+    "flame": {
+      "bg": "O",
+      "grid": [
+        "___K____",
+        "__KRK___",
+        "__KRKK__",
+        "_KORRRK_",
+        "_KOORRK_",
+        "KYOOORK_",
+        "KYYOOK__",
+        "_KKKK___"
+      ]
+    },
+    "diamond": {
+      "bg": "C",
+      "grid": [
+        "___KK___",
+        "__KCCK__",
+        "_KCWCCK_",
+        "KCWCCCCK",
+        "KCCCCCCK",
+        "_KCCCCK_",
+        "__KCCK__",
+        "___KK___"
+      ]
+    },
+    "ghost": {
+      "bg": "V",
+      "grid": [
+        "__KKKK__",
+        "_KWWWWK_",
+        "KWKWWKWK",
+        "KWWWWWWK",
+        "KWWWWWWK",
+        "KWWKKWWK",
+        "KWKWWKWK",
+        "K_K__K_K"
+      ]
+    },
+    "cat": {
+      "bg": "Y",
+      "grid": [
+        "K______K",
+        "KK____KK",
+        "KYKYYKYK",
+        "KYYYYYYK",
+        "KYKYYKYK",
+        "_KYYYYK_",
+        "__KYYK__",
+        "___KK___"
+      ]
+    }
+  }
+}

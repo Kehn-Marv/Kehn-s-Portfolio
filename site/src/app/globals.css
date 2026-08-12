@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+/* ---- Raft neo-brutalism tokens (design_refs/raft-design-tokens/official-export) ---- */
+@theme {
+  /* Brand colors */
+  --color-brutal-yellow: #ffd440; /* Soft Signal */
+  --color-brutal-pink: #fe7da8; /* Bubble Pink */
+  --color-brutal-lavender: #bbafe6; /* Soft Haze */
+  --color-brutal-cyan: #27ccf3;
+  --color-brutal-orange: #f8a16f;
+  --color-brutal-lime: #a9d877;
+  --color-brutal-red: #f97264; /* Coral Red */
+  --color-brutal-stone: #c0b9b1; /* Warm Stone */
+
+  /* Surfaces & neutrals */
+  --color-cream: #fffaef; /* Cotton Core */
+  --color-ink: #141111; /* Ink */
+  --color-app-blue: #e6f8ff;
+  --color-muted: #737373;
+
+  /* Typography */
+  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-mono: var(--font-space-mono), ui-monospace, monospace;
+
+  /* Hard offset shadows (no blur) */
+  --shadow-brutal-xs: 1px 1px 0px #141111;
+  --shadow-brutal-sm: 2px 2px 0px #141111;
+  --shadow-brutal: 4px 4px 0px #141111;
+  --shadow-brutal-lg: 6px 6px 0px #141111;
+  --shadow-brutal-xl: 10px 10px 0px #141111;
+
+  /* Radius */
+  --radius-compact: 4px;
+  --radius-card: 8px;
+}
+
+/* ---- Marquee ---- */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility animate-marquee {
+  animation: marquee var(--marquee-duration, 30s) linear infinite;
+}
+
+/* ---- GitHub panel: pop in from the sticker, cells sweep in by column ---- */
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility animate-pop-in {
+  animation: pop-in 0.2s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+  transform-origin: bottom right;
+}
+
+@keyframes cell-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility animate-cell-in {
+  animation: cell-in 0.3s ease-out both;
+}
+
+/* ---- Pegboard swing: damped pendulum around the peg hook ---- */
+@keyframes swing {
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-5deg);
+  }
+  45% {
+    transform: rotate(3.5deg);
+  }
+  70% {
+    transform: rotate(-2deg);
+  }
+  85% {
+    transform: rotate(1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@utility animate-swing {
+  animation: swing 0.9s ease-in-out;
+}
+
+/* ---- Textures ---- */
+@utility texture-dots {
+  background-image: radial-gradient(
+    color-mix(in srgb, #141111 14%, transparent) 1.2px,
+    transparent 1.2px
+  );
+  background-size: 22px 22px;
+}
+
+@utility texture-checker {
+  background-image: repeating-conic-gradient(
+    color-mix(in srgb, #141111 8%, transparent) 0% 25%,
+    transparent 0% 50%
+  );
+  background-size: 28px 28px;
+}
+
+/* ---- Base ---- */
+html {
+  color-scheme: light only;
+}
+
+/* Clamp the actual root scroller in every engine, not only the body box. */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+}
+
+main,
+footer {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 2560px) {
+  /*
+   * Browser zoom-out creates a very large CSS viewport while keeping rem
+   * values tiny. Scale the design tokens with that viewport so the editorial
+   * composition stays useful without transforming the root hit-test space.
+   */
+  html {
+    font-size: clamp(16px, 0.6vw, 96px);
+  }
+}
+
+::selection {
+  background: var(--color-brutal-yellow);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-swing,
+  .animate-pop-in,
+  .animate-cell-in {
+    animation: none;
+  }
+}

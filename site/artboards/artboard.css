@@ -1,0 +1,164 @@
+/* Shared artboard grammar for work-card covers.
+   Visual vocabulary adapted from raft.build blog covers, values locked to
+   the official Raft design tokens (tokens.css):
+   - border hierarchy: thick outer contours, thin internal detail lines
+   - hard zero-blur shadows, scaled to element size
+   - spacing rhythm on the 4/8/12/16/24 scale
+   cream paper + faint grid + soft radial glows, small tilted UI cards,
+   dashed connectors. */
+
+@import url("tokens.css");
+
+:root {
+  --cream: var(--color-brutal-cream);
+  --ink: var(--color-brutal-black);
+  --yellow: var(--color-brutal-yellow);
+  --pink: var(--color-brutal-pink);
+  --cyan: var(--color-brutal-cyan);
+  --orange: var(--color-brutal-orange);
+  --lime: var(--color-brutal-lime);
+  --lavender: var(--color-brutal-lavender);
+  --red: var(--color-brutal-red);
+  --stone: var(--color-brutal-stone);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-display);
+  color: var(--ink);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.artboard {
+  position: relative;
+  width: 1500px;
+  height: 600px;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(20, 17, 17, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 17, 17, 0.05) 1px, transparent 1px),
+    var(--glow-a, radial-gradient(circle at 18% 25%, rgba(169, 216, 119, 0.3), transparent 30%)),
+    var(--glow-b, radial-gradient(circle at 85% 72%, rgba(255, 212, 64, 0.22), transparent 32%)),
+    var(--cream);
+  background-size: 44px 44px, 44px 44px, auto, auto, auto;
+}
+
+/* Primary UI card: thick contour, soft hard-offset shadow. */
+.card {
+  position: absolute;
+  border: 4px solid var(--ink);
+  background: var(--cream);
+  box-shadow: 10px 12px 0 rgba(20, 17, 17, 0.14);
+}
+
+/* Secondary/small elements get the tighter product shadow. */
+.card.small {
+  border-width: 3px;
+  box-shadow: 5px 6px 0 rgba(20, 17, 17, 0.16);
+}
+
+.card .titlebar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 40px;
+  padding: 0 16px;
+  border-bottom: 3px solid var(--ink);
+  background: var(--bar, var(--cream));
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+}
+
+.titlebar .dots {
+  display: flex;
+  gap: 8px;
+}
+
+.titlebar .dots i {
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--cream);
+}
+
+.titlebar .dots i:nth-child(1) { background: var(--red); }
+.titlebar .dots i:nth-child(2) { background: var(--yellow); }
+.titlebar .dots i:nth-child(3) { background: var(--lime); }
+
+/* Abstract text lines — thin, on the 8px rhythm. */
+.bar {
+  height: 10px;
+  border-radius: 5px;
+  background: var(--bar-color, var(--ink));
+  opacity: var(--bar-opacity, 0.7);
+}
+
+.bar.thin {
+  height: 7px;
+  border-radius: 3.5px;
+}
+
+/* Dashed connectors live in one full-bleed SVG layer. */
+svg.wires {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+svg.wires path {
+  fill: none;
+  stroke-linecap: round;
+  filter: drop-shadow(3px 4px 0 rgba(20, 17, 17, 0.14));
+}
+
+/* Diamond waypoint node on a wire. */
+.node {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 3px solid var(--ink);
+  background: var(--node-bg, var(--cream));
+  transform: rotate(45deg);
+  box-shadow: 3px 3px 0 rgba(20, 17, 17, 0.16);
+}
+
+/* Small tilted sticker pill. */
+.sticker {
+  position: absolute;
+  padding: 8px 16px;
+  border: 3px solid var(--ink);
+  background: var(--sticker-bg, var(--yellow));
+  box-shadow: 5px 6px 0 rgba(20, 17, 17, 0.16);
+  font-weight: 700;
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+/* Tiny badge chip (e.g. a tag in a card corner). */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border: 2px solid var(--ink);
+  background: var(--chip-bg, var(--cream));
+  box-shadow: 2px 2px 0 var(--ink);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

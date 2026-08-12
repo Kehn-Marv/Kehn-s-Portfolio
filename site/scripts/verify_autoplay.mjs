@@ -1,0 +1,9 @@
+import { chromium } from "playwright";
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+await page.goto("http://localhost:3000", { waitUntil: "networkidle" });
+await page.locator("#work").scrollIntoViewIfNeeded();
+await page.waitForTimeout(3500); // autoplay should finish, no hover involved
+await page.locator("#work").screenshot({ path: "/tmp/work_autoplay.png" });
+await browser.close();
+console.log("done");

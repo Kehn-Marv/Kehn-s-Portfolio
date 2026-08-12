@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="artboard.css" />
+<style>
+  /* Photon: question goes in on the left, a photon carries it across,
+     a structured answer comes out on the right. Lime is the hero color. */
+  .artboard {
+    --glow-a: radial-gradient(circle at 16% 28%, rgba(169, 216, 119, 0.34), transparent 30%);
+    --glow-b: radial-gradient(circle at 84% 70%, rgba(255, 212, 64, 0.24), transparent 32%);
+  }
+
+  /* Left: terminal prompt card. */
+  .terminal {
+    left: 100px;
+    top: 118px;
+    width: 430px;
+    transform: rotate(-2deg);
+  }
+  .terminal .body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 24px;
+    background: var(--ink);
+  }
+  .prompt-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--cream);
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .prompt-line .chev { color: var(--lime); font-size: 28px; }
+  .prompt-line .cursor {
+    width: 13px;
+    height: 26px;
+    background: var(--lime);
+  }
+  .terminal .bar { --bar-color: var(--cream); --bar-opacity: 0.45; }
+  .terminal .meta {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4px;
+  }
+
+  /* Middle: the photon in flight. */
+  .photon {
+    position: absolute;
+    left: 672px;
+    top: 118px;
+  }
+  .sparkle { position: absolute; }
+
+  /* Right: structured answer card. */
+  .answer {
+    right: 100px;
+    top: 96px;
+    width: 450px;
+    transform: rotate(1.6deg);
+  }
+  .answer .titlebar { --bar: var(--lime); }
+  .answer .body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 20px;
+  }
+  .summary {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px 16px;
+    border: 3px solid var(--ink);
+    background: var(--yellow);
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+  .summary .bar { --bar-opacity: 0.8; }
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .row i {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    border: 3px solid var(--ink);
+    border-radius: 50%;
+    background: var(--lime);
+  }
+  .answer .foot {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2px;
+  }
+
+  /* Small latency read-out card, upper left. */
+  .latency {
+    left: 250px;
+    top: 34px;
+    width: 170px;
+    transform: rotate(1.8deg);
+  }
+  .latency .body {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 10px 14px 12px;
+  }
+  .latency .big { font-size: 30px; font-weight: 700; }
+  .latency .unit { font-size: 15px; font-weight: 700; opacity: 0.55; }
+</style>
+</head>
+<body>
+<div class="artboard">
+  <!-- dashed flight path: terminal → photon → answer -->
+  <svg class="wires" viewBox="0 0 1500 600">
+    <path d="M 534 296 C 626 296, 648 236, 738 210" stroke="#a9d877" stroke-width="6" stroke-dasharray="16 12" />
+    <path d="M 816 200 C 892 184, 906 232, 964 262" stroke="#ffd440" stroke-width="6" stroke-dasharray="16 12" />
+  </svg>
+  <div class="node" style="left: 630px; top: 273px; --node-bg: var(--lime)"></div>
+  <div class="node" style="left: 888px; top: 190px; --node-bg: var(--yellow)"></div>
+
+  <div class="card terminal">
+    <div class="titlebar"><span class="dots"><i></i><i></i><i></i></span><span class="mono">ptn --ask</span></div>
+    <div class="body">
+      <div class="prompt-line mono"><span class="chev">❯</span> ptn ask <span class="cursor"></span></div>
+      <div class="bar" style="width: 76%"></div>
+      <div class="bar thin" style="width: 52%"></div>
+      <div class="meta"><span class="chip mono" style="--chip-bg: var(--lime)">go</span></div>
+    </div>
+  </div>
+
+  <div class="card small latency">
+    <div class="body mono"><span class="big">1.2</span><span class="unit">s</span><span class="unit" style="margin-left:auto">⚡</span></div>
+  </div>
+
+  <!-- the photon: chunky 4-point star with sparkles -->
+  <svg class="photon" width="180" height="180" viewBox="0 0 170 170">
+    <path d="M85 8 L104 66 L162 85 L104 104 L85 162 L66 104 L8 85 L66 66 Z"
+          fill="#ffd440" stroke="#141111" stroke-width="8" stroke-linejoin="round"
+          transform="rotate(12 85 85)" />
+    <circle cx="85" cy="85" r="14" fill="#fffaef" stroke="#141111" stroke-width="5" transform="rotate(12 85 85)" />
+  </svg>
+  <svg class="sparkle" style="left: 640px; top: 76px" width="40" height="40" viewBox="0 0 44 44">
+    <path d="M22 2 L27 17 L42 22 L27 27 L22 42 L17 27 L2 22 L17 17 Z" fill="#fe7da8" stroke="#141111" stroke-width="4" stroke-linejoin="round" />
+  </svg>
+  <svg class="sparkle" style="left: 842px; top: 268px" width="30" height="30" viewBox="0 0 44 44">
+    <path d="M22 2 L27 17 L42 22 L27 27 L22 42 L17 27 L2 22 L17 17 Z" fill="#fe7da8" stroke="#141111" stroke-width="5" stroke-linejoin="round" />
+  </svg>
+  <svg class="sparkle" style="left: 756px; top: 322px" width="24" height="24" viewBox="0 0 44 44">
+    <path d="M22 2 L27 17 L42 22 L27 27 L22 42 L17 27 L2 22 L17 17 Z" fill="#27ccf3" stroke="#141111" stroke-width="6" stroke-linejoin="round" />
+  </svg>
+
+  <div class="card answer">
+    <div class="titlebar"><span class="dots"><i></i><i></i><i></i></span><span class="mono">answer</span></div>
+    <div class="body">
+      <div class="summary">
+        <div class="bar" style="width: 92%"></div>
+        <div class="bar" style="width: 61%"></div>
+      </div>
+      <div class="row"><i></i><div class="bar" style="width: 80%"></div></div>
+      <div class="row"><i></i><div class="bar" style="width: 64%"></div></div>
+      <div class="row"><i></i><div class="bar" style="width: 72%"></div></div>
+      <div class="foot"><span class="chip mono" style="--chip-bg: var(--yellow)">structured</span></div>
+    </div>
+  </div>
+
+  <div class="sticker mono" style="left: 470px; bottom: 64px; transform: rotate(-3deg); --sticker-bg: var(--cream)">
+    $ brew install photon
+  </div>
+</div>
+</body>
+</html>

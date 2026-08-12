@@ -1,0 +1,67 @@
+/* Raft Design Tokens — CSS custom properties
+ * Neo-brutalist design language: flat brand colors, hard offset shadows, thick black borders.
+ * Variable names match the Raft web app, so this is drop-in.
+ * Usage: import this file, then reference e.g. var(--color-brutal-yellow), var(--shadow-brutal).
+ */
+:root {
+  /* Brand colors */
+  --color-brutal-yellow: #FFD440;   /* Soft Signal */
+  --color-brutal-pink: #FE7DA8;     /* Bubble Pink */
+  --color-brutal-lavender: #BBAFE6; /* Soft Haze */
+  --color-brutal-cream: #FFFAEF;    /* Cotton Core */
+  --color-brutal-black: #141111;    /* Ink */
+  --color-brutal-cyan: #27CCF3;     /* Cyan */
+  --color-brutal-orange: #F8A16F;   /* Orange */
+  --color-brutal-lime: #A9D877;     /* Lime */
+  --color-brutal-red: #F97264;      /* Coral Red */
+  --color-brutal-stone: #C0B9B1;    /* Warm Stone */
+
+  /* Semantic alias */
+  --color-soft-signal: var(--color-brutal-yellow);
+
+  /* Surfaces & neutrals */
+  --color-surface-white: #FFFFFF;
+  --color-surface-cream: #FFFAEF;
+  --color-app-bg-light-blue: #E6F8FF;
+  --color-empty-state-gray: #E7E7E7;
+
+  /* Text & lines */
+  --color-text-black: #000000;
+  --color-text-muted-gray: #737373;
+  --color-border-black: #000000;
+  --color-shadow-black: #141111;
+
+  /* Typography */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, monospace;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Shadows (hard offset) */
+  --shadow-brutal: 4px 4px 0px #141111;
+  --shadow-brutal-sm: 2px 2px 0px #141111;
+  --shadow-brutal-lg: 6px 6px 0px #141111;
+  --shadow-brutal-hover: 2px 2px 0px #141111;
+  --shadow-brutal-active: 1px 1px 0px #141111;
+  --shadow-soft-popover: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  /* Borders */
+  --border-thin: 1px;
+  --border-default: 2px;
+  --border-strong: 3px;
+  --border-color: #141111;
+
+  /* Radius */
+  --radius-none: 0px;
+  --radius-compact: 4px;
+  --radius-card: 8px;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+}

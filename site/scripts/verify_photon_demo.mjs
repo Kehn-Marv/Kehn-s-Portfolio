@@ -1,0 +1,16 @@
+import { chromium } from "playwright";
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+await page.goto("http://localhost:3000", { waitUntil: "networkidle" });
+await page.locator("#work").scrollIntoViewIfNeeded();
+await page.waitForTimeout(800);
+const card = page.locator("text=ptn ask").first();
+await card.scrollIntoViewIfNeeded();
+await page.screenshot({ path: "/tmp/photon_idle.png", clip: { x: 100, y: 200, width: 700, height: 500 } });
+const box = await card.boundingBox();
+await page.mouse.move(box.x + 50, box.y + 20);
+await page.waitForTimeout(2200);
+const cardBox = await page.locator("text=PHOTON").first().boundingBox();
+await page.screenshot({ path: "/tmp/photon_hover.png", clip: { x: Math.max(0, box.x - 60), y: Math.max(0, box.y - 120), width: 640, height: 560 } });
+await browser.close();
+console.log("done");
